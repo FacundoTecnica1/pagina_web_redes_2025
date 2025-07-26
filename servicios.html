@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio de Autos</title>
+    
+    <style>
+
+        body {
+            background: linear-gradient(180deg, #e0e8f0, #f9fafb);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            display: flex;
+            flex-direction: column; /* para acomodar los botones al final */
+            padding: 20px;
+        }
+
+        .content {
+            display: flex;
+            flex: 1; /* ocupa todo el espacio que hay disponibles antes de los botones */
+        }
+
+        .lado-izquierdo {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .lado-derecho {
+            flex: 1;
+            padding-left: 20px;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .tipos-de-auto {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .tipos-de-auto div {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        .resumen {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .total {
+            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="lado-izquierdo">
+                <h2>Tipo de auto</h2>
+                <div class="tipos-de-auto">
+                    <div onclick="selectCar('sedan', 100)">
+                        <img src="sedan.png" alt="Sedan" width="80" height="40">
+                        <p>SEDAN</p>
+                    </div>
+                    <div onclick="selectCar('suv', 150)">
+                        <img src="suv.png" alt="SUV" width="80" height="40">
+                        <p>SUV</p>
+                    </div>
+                    <div onclick="selectCar('furgoneta', 200)">
+                        <img src="camioneta.png" alt="Camioneta" width="80" height="40">
+                        <p>CAMIONETA</p>
+                    </div>
+                </div>
+
+                <h3>Servicios</h3>
+
+                <ul>
+                    <li><input type="checkbox" value="20" onchange="updateTotal(this)"> Servicio 1</li>
+                    <li><input type="checkbox" value="30" onchange="updateTotal(this)"> Servicio 2</li>
+                    <li><input type="checkbox" value="25" onchange="updateTotal(this)"> Servicio 3</li>
+                    <li><input type="checkbox" value="40" onchange="updateTotal(this)"> Servicio 4</li>
+                    <li><input type="checkbox" value="50" onchange="updateTotal(this)"> Servicio 5</li>
+                    <li><input type="checkbox" value="60" onchange="updateTotal(this)"> Servicio 6</li>
+                </ul>
+
+            </div>
+            <div class="lado-derecho">
+                <h2>Resumen pago</h2>
+                <div id="selectedCar">Tipo de auto: Ninguno seleccionado</div>
+                <div id="selectedServices" style="margin-top: 20px;">
+                    Servicios seleccionados:
+                    <ul id="servicesList" style="margin-top: 5px;"></ul>
+                </div>
+                <div class="total">
+                    <p>Total:</p>
+                    <p id="totalAmount">$0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="botones">
+            <button class="btn" onclick="window.history.back()">Volver</button>
+            <button class="btn" onclick="confirmar()">Confirmar</button>
+        </div>
+
+    </div>
+
+<script>
+    let precioAuto = 0;
+    let tipoAutoSeleccionado = '';
+
+    function seleccionarAuto(tipo, precio) {
+        precioAuto = precio;
+        tipoAutoSeleccionado = tipo.toUpperCase();
+        document.getElementById('selectedCar').textContent = `Tipo de auto: ${tipoAutoSeleccionado}`;
+        actualizarTotal();
+    }
+
+    function actualizarTotal(servicioCheckbox) {
+        let totalServicios = 0;
+        const listaServicios = document.getElementById('servicesList');
+        listaServicios.innerHTML = '';
+        
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        checkboxes.forEach((checkbox) => {
+            const nombreServicio = checkbox.parentElement.textContent.trim();
+            const precioServicio = parseInt(checkbox.value);
+            totalServicios += precioServicio;
+            
+            const li = document.createElement('li');
+            li.textContent = `${nombreServicio} - $${precioServicio}`;
+            listaServicios.appendChild(li);
+        });
+        
+        const total = precioAuto + totalServicios;
+        document.getElementById('totalAmount').innerText = `$${total}`;
+    }
+
+    function confirmar() {
+        alert('¡Pedido confirmado!');
+    }
+</script>
+
+</body>
+</html>

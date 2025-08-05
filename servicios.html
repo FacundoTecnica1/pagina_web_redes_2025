@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Servicio de Autos</title>
     
     <style>
 
         body {
             background: linear-gradient(180deg, #e0e8f0, #f9fafb);
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,49 +17,58 @@
             margin: 0;
         }
 
+        h2, h3{
+            text-align: center;
+            color: #333;
+        }
+
         .container {
             background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 850px;
+            height: 550px; /* Aumentado ligeramente la altura */
             display: flex;
-            flex-direction: column; /* para acomodar los botones al final */
-            padding: 20px;
+            flex-direction: column;
+            padding: 30px 30px 20px; /* Ajustado padding inferior */
         }
 
         .content {
             display: flex;
-            flex: 1; /* ocupa todo el espacio que hay disponibles antes de los botones */
+            flex: 1;
+            padding-bottom: 20px;
+            overflow: auto; /* Permite scroll si el contenido es muy largo */
         }
 
         .lado-izquierdo {
             flex: 1;
-            padding-right: 20px;
+            padding-right: 30px;
         }
 
         .lado-derecho {
             flex: 1;
-            padding-left: 20px;
+            padding-left: 30px;
             border-left: 1px solid #e0e0e0;
         }
 
         .tipos-de-auto {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
+            justify-content: space-around;
+            margin-bottom: 30px;
         }
 
         .tipos-de-auto div {
             text-align: center;
             cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            border: 2px solid transparent;
         }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        h3 {
-            margin: 10px 0;
+        
+        .tipos-de-auto div:hover {
+            background-color: #f0f4f8;
+            transform: translateY(-5px);
         }
 
         .resumen {
@@ -72,84 +81,171 @@
             border-top: 1px solid #e0e0e0;
             margin-top: 20px;
             padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 20px;
         }
 
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"] + label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: #555;
+        }
+
+        input[type="radio"] + label::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            margin-right: 15px;
+            transition: all 0.2s ease;
+            background-color: #f0f0f0;
+        }
+
+        input[type="radio"]:checked + label::before {
+            background-color: #007BFF;
+            border-color: #007BFF;
+            transform: scale(1.1);
+        }
+        
+        input[type="radio"]:checked + label::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            left: -27px;
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+        
+        input[type="radio"] + label::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            left: -27px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
         .botones {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: auto; /* Empuja los botones hacia abajo */
+            padding-top: 20px;
         }
 
         .btn {
             background-color: #007BFF;
+            text-decoration: none;
             color: white;
             border: none;
             border-radius: 8px;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 16px;
             cursor: pointer;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .btn:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
         }
-
+        
+        #Fecha {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <div class="lado-izquierdo">
-                <h2>Tipo de auto</h2>
-                <div class="tipos-de-auto">
-                    <div onclick="selectCar('sedan', 100)">
-                        <img src="sedan.png" alt="Sedan" width="80" height="40">
-                        <p>SEDAN</p>
-                    </div>
-                    <div onclick="selectCar('suv', 150)">
-                        <img src="suv.png" alt="SUV" width="80" height="40">
-                        <p>SUV</p>
-                    </div>
-                    <div onclick="selectCar('furgoneta', 200)">
-                        <img src="camioneta.png" alt="Camioneta" width="80" height="40">
-                        <p>CAMIONETA</p>
-                    </div>
+
+<div class="container">
+    <div class="content">
+        <div class="lado-izquierdo">
+            <h2>Tipo de auto</h2>
+            <div class="tipos-de-auto">
+                <div onclick="seleccionarAuto('sedan', 100)">
+                    <img src="sedan.png" alt="Sedan" width="80" height="40">
+                    <p>SEDAN</p>
                 </div>
 
-                <h3>Servicios</h3>
-
-                <ul>
-                    <li><input type="checkbox" value="20" onchange="updateTotal(this)"> Servicio 1</li>
-                    <li><input type="checkbox" value="30" onchange="updateTotal(this)"> Servicio 2</li>
-                    <li><input type="checkbox" value="25" onchange="updateTotal(this)"> Servicio 3</li>
-                    <li><input type="checkbox" value="40" onchange="updateTotal(this)"> Servicio 4</li>
-                    <li><input type="checkbox" value="50" onchange="updateTotal(this)"> Servicio 5</li>
-                    <li><input type="checkbox" value="60" onchange="updateTotal(this)"> Servicio 6</li>
-                </ul>
-
-            </div>
-            <div class="lado-derecho">
-                <h2>Resumen pago</h2>
-                <div id="selectedCar">Tipo de auto: Ninguno seleccionado</div>
-                <div id="selectedServices" style="margin-top: 20px;">
-                    Servicios seleccionados:
-                    <ul id="servicesList" style="margin-top: 5px;"></ul>
+                <div onclick="seleccionarAuto('suv', 150)">
+                    <img src="suv.png" alt="SUV" width="80" height="40">
+                    <p>SUV</p>
                 </div>
-                <div class="total">
-                    <p>Total:</p>
-                    <p id="totalAmount">$0</p>
+
+                <div onclick="seleccionarAuto('camioneta', 200)">
+                    <img src="camioneta.png" alt="Camioneta" width="80" height="40">
+                    <p>CAMIONETA</p>
                 </div>
             </div>
+
+            <h3>Servicios</h3>
+            <ul>
+                <li>
+                  <input type="radio" name="servicio" value="20000" onchange="actualizarTotal()" id="serv1"> 
+                  <label for="serv1"><span>Lavado Simple - Solo interior</span></label>
+                </li>
+                <li>
+                  <input type="radio" name="servicio" value="27000" onchange="actualizarTotal()" id="serv2"> 
+                  <label for="serv2"><span>Lavado Plus - Solo exterior</span></label>
+                </li>
+                <li>
+                  <input type="radio" name="servicio" value="35000" onchange="actualizarTotal()" id="serv3"> 
+                  <label for="serv3"><span>Lavado Completo - Interior y exterior</span></label>
+                </li>
+            </ul>
+
+            <h3>Selecciona una fecha</h3>
+            <input type="date" id="Fecha" onchange="actualizarFecha()">
         </div>
 
-        <div class="botones">
-            <button class="btn" onclick="window.history.back()">Volver</button>
-            <button class="btn" onclick="confirmar()">Confirmar</button>
+        <div class="lado-derecho">
+            <h2>Resumen pago</h2>
+            <div id="selectedCar">Tipo de auto: Ninguno seleccionado</div>
+            <div id="selectedServices" style="margin-top: 20px;">
+                Servicio seleccionado:
+                <ul id="servicesList" style="margin-top: 5px;"></ul>
+            </div>
+            <div class="total">
+                <p>Total:</p>
+                <p id="totalAmount">$0</p>
+            </div>
         </div>
-
     </div>
+    
+    <div class="botones">
+        <a href="index.html" class="btn">Volver</a>
+        <button class="btn" onclick="confirmar()">Confirmar</button>
+    </div>
+</div>
 
 <script>
     let precioAuto = 0;
@@ -162,29 +258,116 @@
         actualizarTotal();
     }
 
-    function actualizarTotal(servicioCheckbox) {
+    function actualizarTotal() {
         let totalServicios = 0;
         const listaServicios = document.getElementById('servicesList');
         listaServicios.innerHTML = '';
-        
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-        checkboxes.forEach((checkbox) => {
-            const nombreServicio = checkbox.parentElement.textContent.trim();
+
+        const checkbox = document.querySelector('input[name="servicio"]:checked');
+        let nombreServicios = [];
+        let preciosServicios = [];
+
+        if (checkbox) {
+            const label = document.querySelector(`label[for="${checkbox.id}"]`);
+            const nombreServicio = label ? label.textContent.trim() : '';
             const precioServicio = parseInt(checkbox.value);
-            totalServicios += precioServicio;
-            
+            nombreServicios.push(nombreServicio);
+            preciosServicios.push(precioServicio);
+
             const li = document.createElement('li');
             li.textContent = `${nombreServicio} - $${precioServicio}`;
             listaServicios.appendChild(li);
-        });
-        
+            totalServicios += precioServicio;
+        }
+
         const total = precioAuto + totalServicios;
         document.getElementById('totalAmount').innerText = `$${total}`;
+
+        window.nombreServiciosSeleccionados = nombreServicios;
+        window.preciosServiciosSeleccionados = preciosServicios;
+    }
+
+    function actualizarFecha() {
+        const fechaSeleccionada = document.getElementById('Fecha').value;
+        const hoy = new Date();
+        const fechaIngresada = new Date(fechaSeleccionada);
+
+        // Verificación manual en caso de que se edite el input con texto o retroceso
+        hoy.setHours(0, 0, 0, 0); // Quita la hora para comparar solo la fecha
+
+        if (fechaIngresada < hoy) {
+            alert('Por favor seleccioná una fecha que sea posterior a hoy.');
+            document.getElementById('Fecha').value = '';
+        }
     }
 
     function confirmar() {
-        alert('¡Pedido confirmado!');
+        const idCliente = localStorage.getItem('ID_cliente');
+        const fecha = document.getElementById('Fecha').value;
+
+        if (!tipoAutoSeleccionado) {
+            alert('Por favor seleccioná un tipo de auto.');
+            return;
+        }
+
+        if (!fecha) {
+            alert('Por favor seleccioná una fecha válida.');
+            return;
+        }
+
+        const servicioSeleccionado = document.querySelector('input[name="servicio"]:checked');
+        if (!servicioSeleccionado) {
+            alert('Por favor seleccioná un servicio.');
+            return;
+        }
+
+        const tipoAuto = tipoAutoSeleccionado;
+        const precioAutoNum = precioAuto;
+
+        let nombreServicios = window.nombreServiciosSeleccionados || [];
+        let preciosServicios = window.preciosServiciosSeleccionados || [];
+
+        const nombreServiciosStr = nombreServicios.join(', ');
+        const precioServiciosSum = preciosServicios.reduce((a, b) => a + b, 0);
+
+        const total = precioAutoNum + precioServiciosSum;
+
+        const data = new FormData();
+        data.append('ID_cliente', idCliente);
+        data.append('Fecha', fecha);
+        data.append('tipo_auto', tipoAuto);
+        data.append('precio_auto', precioAutoNum);
+        data.append('nombre_servicio', nombreServiciosStr);
+        data.append('precio_servicio', precioServiciosSum);
+        data.append('total', total);
+
+        fetch('guardar_pedido.php', {
+            method: 'POST',
+            body: data
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert(result);
+            window.location.href = 'pedido_confirmado.html'; 
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un error al enviar el pedido.');
+        });
     }
+
+    // Establecer fecha mínima al cargar
+    function establecerFechaMinima() {
+        const hoy = new Date();
+        const año = hoy.getFullYear();
+        const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+        const dia = String(hoy.getDate()).padStart(2, '0');
+        const fechaMinima = `${año}-${mes}-${dia}`;
+        document.getElementById('Fecha').setAttribute('min', fechaMinima);
+    }
+
+    window.onload = establecerFechaMinima;
+
 </script>
 
 </body>

@@ -1,7 +1,5 @@
 <?php
-// insert_pedido.php
 
-// Conectar a la base de datos (ajusta según tus datos)
 $conexion = new mysqli('localhost', 'root', '', 'autolavado');
 if ($conexion->connect_error) {
     die('Error de conexión: ' . $conexion->connect_error);

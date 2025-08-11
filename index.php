@@ -231,6 +231,7 @@
     </style>
 </head>
 <body>
+    
     <!-- Header y la barra de navegacion -->
     <header class="main-header">
         <div class="container header-content">

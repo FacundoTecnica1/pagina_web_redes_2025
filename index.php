@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autolavado Premium | Limpieza Profesional para tu Vehículo</title>
+
     <style>
-        /* Estilos base */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,14 +15,13 @@
             color: #333;
         }
         
-        /* Layout */
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
         
-        /* Header */
+        
         .main-header {
             background-color: #1e3a8a;
             color: white;
@@ -54,7 +54,7 @@
             color: #93c5fd;
         }
         
-        /* Hero section */
+        
         .hero-section {
             background-color: #1e3a8a;
             color: white;
@@ -76,7 +76,7 @@
             margin-bottom: 2rem;
         }
         
-        /* Botones */
+        
         .btn {
             display: inline-block;
             background-color: #2563eb;
@@ -95,7 +95,7 @@
             background-color: #1d4ed8;
         }
         
-        /* Secciones generales */
+       
         .section {
             padding: 40px 0;
         }
@@ -118,8 +118,8 @@
             margin: 0 auto 2rem;
         }
         
-        /* Servicios */
-        .services-container {
+        
+        .servicios-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -145,12 +145,12 @@
             margin-bottom: 1rem;
         }
         
-        .price {
+        .precio {
             color: #2563eb;
             font-weight: bold;
         }
         
-        /* Reseñas */
+        
         .reseñas-section {
             background-color: #f1f5f9;
         }
@@ -180,7 +180,7 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Formularios */
+        
         .form-container {
             max-width: 600px;
             margin: 0 auto;
@@ -211,7 +211,7 @@
             resize: vertical;
         }
         
-        /* Footer */
+        
         .main-footer {
             background-color: #1e293b;
             color: white;
@@ -223,7 +223,7 @@
             margin: 0;
         }
         
-        /* Mensaje cuando no hay reseñas */
+        
         .no-reseñas {
             text-align: center;
             color: #666;
@@ -258,26 +258,29 @@
             <h2 class="section-title">Nuestros <span class="section-title-highlight">Servicios</span></h2>
             <p class="section-subtitle">Ofrecemos una variedad de servicios para mantener tu vehículo impecable</p>
             
-            <div class="services-container">
+            <div class="servicios-container">
                 
                 <div class="service-card">
+                    <img src="Servicio - Lavado simple.jpg" alt="" width="300px" height="250px" style="display: block; margin: 0 auto;">
                     <h3 class="service-title">Lavado Simple</h3>
                     <p class="service-description">Limpieza completa del interior del vehículo.</p>
-                    <p class="price">$20.000</p>
+                    <p class="precio">$20.000</p>
                 </div>
                 
                 
                 <div class="service-card">
+                    <img src="Servicio - Lavado Plus.jpg" alt="" width="300px" height="250px" style="display: block; margin: 0 auto;">
                     <h3 class="service-title">Lavado Plus</h3>
                     <p class="service-description">Limpieza exterior completa con productos premium.</p>
-                    <p class="price">$25.000</p>
+                    <p class="precio">$25.000</p>
                 </div>
                 
                 
                 <div class="service-card">
+                    <img src="Servicios - Lavado Completo.png" alt="" width="400px" height="250px" style="display: block; margin: 0 auto;">
                     <h3 class="service-title">Lavado Completo</h3>
                     <p class="service-description">Lavado completo interior y exterior premium.</p>
-                    <p class="price">$40.000</p>
+                    <p class="precio">$40.000</p>
                 </div>
             </div>
         </div>
@@ -315,7 +318,7 @@
                         echo '<h3 class="reseña-author">' . htmlspecialchars($row["nombre"]) . '</h3>';
                         echo '<p class="reseña-text">"' . htmlspecialchars($row["mensaje"]) . '"</p>';
                         echo '<p class="reseña-email">Email: ' . htmlspecialchars($row["email"]) . '</p>';
-                        echo '<p class="price">Puntuación: ' . str_repeat('★', $row["puntuacion"]) . str_repeat('☆', 5 - $row["puntuacion"]) . '</p>';
+                        echo '<p class="precio">Puntuación: ' . str_repeat('★', $row["puntuacion"]) . str_repeat('☆', 5 - $row["puntuacion"]) . '</p>';
                         echo '</div>';
                     }
                 } else {

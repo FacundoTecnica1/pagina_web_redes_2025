@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
     <title>Autolavado Premium | Limpieza Profesional para tu Vehículo</title>
 
     <style>
@@ -179,8 +180,7 @@
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
-        
-        
+           
         .form-container {
             max-width: 600px;
             margin: 0 auto;
@@ -231,7 +231,7 @@
     </style>
 </head>
 <body>
-    
+
     <!-- Header y la barra de navegacion -->
     <header class="main-header">
         <div class="container header-content">
@@ -240,6 +240,7 @@
                 <a href="#inicio">Inicio</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#reseñas">Reseñas</a>
+                <a href="historial.php">Historial de Pedidos</a>
             </nav>
         </div>
     </header>
@@ -262,7 +263,7 @@
             <div class="servicios-container">
                 
                 <div class="service-card">
-                    <img src="Servicio - Lavado simple.jpg" alt="" width="300px" height="250px" style="display: block; margin: 0 auto;">
+                    <img src="imagenes\Servicio - Lavado simple.jpg" alt="Imagen de servicio simple" width="300px" height="250px" style="display: block; margin: 0 auto;">
                     <h3 class="service-title">Lavado Simple</h3>
                     <p class="service-description">Limpieza completa del interior del vehículo.</p>
                     <p class="precio">$20.000</p>
@@ -270,7 +271,7 @@
                 
                 
                 <div class="service-card">
-                    <img src="Servicio - Lavado Plus.jpg" alt="" width="300px" height="250px" style="display: block; margin: 0 auto;">
+                    <img src="imagenes\Servicio - Lavado Plus.jpg" alt="Imagen de servicio plus" width="300px" height="250px" style="display: block; margin: 0 auto;">
                     <h3 class="service-title">Lavado Plus</h3>
                     <p class="service-description">Limpieza exterior completa con productos premium.</p>
                     <p class="precio">$25.000</p>
@@ -278,7 +279,7 @@
                 
                 
                 <div class="service-card">
-                    <img src="Servicios - Lavado Completo.png" alt="" width="400px" height="250px" style="display: block; margin: 0 auto;">
+                    <img src="imagenes\Servicios - Lavado Completo.png" alt="Imagen de servicio completo" width="400px" height="250px" style="display: block; margin: 0 auto;">
                     <h3 class="service-title">Lavado Completo</h3>
                     <p class="service-description">Lavado completo interior y exterior premium.</p>
                     <p class="precio">$40.000</p>
@@ -293,7 +294,6 @@
             <h2 class="section-title">Reseñas de Nuestros Clientes</h2>
             <p class="section-subtitle">Lo que dicen nuestros clientes sobre nosotros.</p>
             
-            <div>
                 <?php
                 // Conexión a la base de datos
                 $conn = new mysqli("localhost", "root", "", "autolavado");
@@ -329,7 +329,7 @@
                 // Cerrar conexión
                 $conn->close();
                 ?>
-            </div>
+            
         </div>
     </section>
 

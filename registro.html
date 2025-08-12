@@ -13,7 +13,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     display: flex;
     justify-content: center;
@@ -26,7 +25,6 @@ h2{
     padding-top: 20px;
     color: aliceblue;
 }
-
 
 .container{
     display: flex;
@@ -43,7 +41,6 @@ h2{
     box-shadow: 0 0 30px rgba(0, 0, 0, .2);
 }
 
-
 .form-box{
     width: 50%;
     height: 100%;
@@ -55,7 +52,6 @@ h2{
     text-align: center;
     color: #333;
 }
-
 
 form{
     width: 100%;
@@ -87,19 +83,30 @@ form{
 }
 
 .boton{
-width: 80% ;
-height: 40px;
-padding-bottom: 10;
-background: #b5c2e8 ;
-border-radius: 40px;
-border: none;
-cursor: pointer;
-color: blue;
+    width: 80%;
+    height: 40px;
+    padding-bottom: 10;
+    background: #b5c2e8;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    color: blue;
 }
 
 .boton:disabled {
-background-color: #ccc; 
-cursor: not-allowed; 
+    background-color: #ccc; 
+    cursor: not-allowed; 
+}
+
+.boton-volver {
+    width: 80%;
+    height: 40px;
+    background: rgb(55, 55, 240); 
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-top: 20px; 
 }
 </style>
 
@@ -107,7 +114,7 @@ cursor: not-allowed;
 <body>
   <div class="container">
     <div class="logo">
-      <img src="GOclean.jpg" alt="logo del autolavado" width="500px" height="500px">
+      <img src="imagenes/GOclean.jpg" alt="logo del autolavado" width="500px" height="500px">
     </div>
 
     <div class="form-box">
@@ -135,12 +142,13 @@ cursor: not-allowed;
         </div>
 
         <button type="submit" class="boton" id="enviarBtn" disabled>Enviar</button>
+        <button type="button" class="boton-volver" onclick="window.location.href='index.php'">Volver</button>        
       </form>
     </div>
   </div>
 
   <script>
-    // Habilitar o deshabilitar el botón según los campos
+    // Habilitar o deshabilitar el botón de enviar según los campos llenos
     const inputs = document.querySelectorAll('.input-box input');
     const enviarBtn = document.getElementById('enviarBtn');
 

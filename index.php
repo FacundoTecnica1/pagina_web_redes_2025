@@ -38,7 +38,10 @@ if (isset($_COOKIE['ID_cliente'])) {
   <link rel="icon" href="favicon.png" type="image/x-icon">
 
   <style>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 52e8634aecc1a95221eab6450885b145f9c6560d
     body {
       font-family: "Segoe UI", Roboto, Arial, sans-serif;
       margin: 0;
@@ -93,15 +96,61 @@ if (isset($_COOKIE['ID_cliente'])) {
       color: #fbbf24;
     }
 
+<<<<<<< HEAD
+    /* --- HERO MEJORADO --- */
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb, #10b981);
+      color: #fff;
+=======
     /* --- HERO --- */
     .hero {
       background: linear-gradient(135deg, #1e3a8a, #2563eb, #10b981);
       color: #fff;
       text-align: center;
+>>>>>>> 52e8634aecc1a95221eab6450885b145f9c6560d
       padding: 80px 20px;
       border-bottom: 6px solid #fbbf24;
     }
 
+<<<<<<< HEAD
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .hero-logo {
+      background: rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-logo img {
+      width: 220px;
+      height: auto;
+      display: block;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-text span {
+      color: #fbbf24;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      max-width: 550px;
+      margin: 0 auto;
+=======
     .hero h1 {
       font-size: 2.8rem;
     }
@@ -114,6 +163,7 @@ if (isset($_COOKIE['ID_cliente'])) {
       font-size: 1.1rem;
       max-width: 600px;
       margin: 15px auto;
+>>>>>>> 52e8634aecc1a95221eab6450885b145f9c6560d
     }
 
     .btn {
@@ -133,6 +183,21 @@ if (isset($_COOKIE['ID_cliente'])) {
       color: #fff;
     }
 
+<<<<<<< HEAD
+    /* HERO lado a lado en escritorio */
+    @media (min-width: 768px) {
+      .hero-content {
+        flex-direction: row;
+        text-align: left;
+        justify-content: center;
+      }
+      .hero-text {
+        max-width: 500px;
+      }
+    }
+
+=======
+>>>>>>> 52e8634aecc1a95221eab6450885b145f9c6560d
     /* --- SECCIONES --- */
     section {
       padding: 60px 0;
@@ -269,10 +334,22 @@ if (isset($_COOKIE['ID_cliente'])) {
 
   <!-- HERO -->
   <section class="hero" id="inicio">
+<<<<<<< HEAD
+    <div class="container hero-content">
+      <div class="hero-logo">
+        <img src="imagenes/ferrari.png" alt="ferrari logo">
+      </div>
+      <div class="hero-text">
+        <h1><span>Autolavado Premium</span></h1>
+        <p>Transformamos tu vehículo con productos y técnicas de limpieza de alta calidad.</p>
+        <a href="registro.html" class="btn">Registrar Auto / Pedir Servicio</a>
+      </div>
+=======
     <div class="container">
       <h1>Lavado Profesional <span>Premium</span></h1>
       <p>Transformamos tu vehículo con productos y técnicas de limpieza de alta calidad.</p>
       <a href="registro.html" class="btn">Registrar Auto / Pedir Servicio</a>
+>>>>>>> 52e8634aecc1a95221eab6450885b145f9c6560d
     </div>
   </section>
 

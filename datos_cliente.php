@@ -27,6 +27,10 @@ $stmt->bind_param("ssss", $nombre, $correo, $modeloauto, $matricula);
 if ($stmt->execute()) {
     $id_cliente = $stmt->insert_id;
     $_SESSION['ID_cliente'] = $id_cliente;
+    
+    // Establecer la cookie ID_cliente
+    setcookie('ID_cliente', $id_cliente, time() + (86400 * 30), "/"); // Cookie válida por 30 días
+    
     echo $id_cliente; // DEVOLVEMOS SOLO el ID
 } else {
     echo "0"; // Error

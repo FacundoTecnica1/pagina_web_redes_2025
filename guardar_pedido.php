@@ -20,8 +20,10 @@ $sql = "INSERT INTO Pedidos (ID_cliente, Fecha, tipo_auto, precio_auto, nombre_s
 
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("isssssd", $id_cliente, $fecha, $tipo_auto, $precio_auto, $nombre_servicio, $precio_servicio, $total);
-
+ 
 if ($stmt->execute()) {
+    // Establecer la cookie ID_cliente después de guardar el pedido
+    setcookie('ID_cliente', $id_cliente, time() + (86400 * 30), "/"); // Cookie válida por 30 días
     echo 'Pedido insertado correctamente';
 } else {
     echo 'Error al insertar el pedido: ' . $stmt->error;

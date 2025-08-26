@@ -1,3 +1,33 @@
+<?php
+// Conexión a la base de datos
+$conn = new mysqli("localhost", "root", "", "autolavado");
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+$can_review = false;
+$id_cliente_cookie = null;
+
+// Verificar si existe la cookie ID_cliente
+if (isset($_COOKIE['ID_cliente'])) {
+    $id_cliente_cookie = (int)$_COOKIE['ID_cliente'];
+
+    // Verificar si el cliente con ese ID tiene pedidos
+    $stmt_check_pedidos = $conn->prepare("SELECT COUNT(*) FROM Pedidos WHERE ID_cliente = ?");
+    $stmt_check_pedidos->bind_param("i", $id_cliente_cookie);
+    $stmt_check_pedidos->execute();
+    $stmt_check_pedidos->bind_result($pedido_count);
+    $stmt_check_pedidos->fetch();
+    $stmt_check_pedidos->close();
+
+    if ($pedido_count > 0) {
+        $can_review = true;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -232,7 +262,7 @@
         <a href="#inicio">Inicio</a>
         <a href="#servicios">Servicios</a>
         <a href="#reseñas">Reseñas</a>
-        <a href="historial.php">Historial</a>
+        <a href="pedidos.php">Pedidos</a>
       </nav>
     </div>
   </header>
@@ -281,8 +311,7 @@
       <p class="section-subtitle">Lo que opinan nuestros clientes.</p>
 
       <?php
-        $conn = new mysqli("localhost","root","","autolavado");
-        if ($conn->connect_error) { die("Error: ".$conn->connect_error); }
+        // La conexión a la base de datos ya está abierta al inicio del archivo
         $sql = "SELECT nombre,email,mensaje,puntuacion FROM reseñas";
         $res = $conn->query($sql);
         if ($res && $res->num_rows > 0) {
@@ -297,7 +326,6 @@
         } else {
           echo "<p>No hay reseñas aún.</p>";
         }
-        $conn->close();
       ?>
 
     </div>
@@ -308,11 +336,9 @@
     <div class="container">
       <h2 class="section-title">Deja tu Reseña</h2>
       <p class="section-subtitle">Tu opinión es muy valiosa para nosotros.</p>
+      <?php if ($can_review): ?>
       <form action="reseñas.php" method="POST">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <label for="email">Correo:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="hidden" name="id_cliente" value="<?php echo htmlspecialchars($id_cliente_cookie); ?>">
         <label for="mensaje">Comentario:</label>
         <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
         <label for="puntuacion">Puntuación:</label>
@@ -326,6 +352,9 @@
         </select>
         <button type="submit">Enviar Reseña</button>
       </form>
+      <?php else: ?>
+      <p>Para dejar una reseña, debes haber registrado un auto y realizado al menos un pedido.</p>
+      <?php endif; ?>
     </div>
   </section>
 
@@ -336,3 +365,8 @@
 
 </body>
 </html>
+
+<?php
+// Cerrar conexión al final del archivo
+$conn->close();
+?>

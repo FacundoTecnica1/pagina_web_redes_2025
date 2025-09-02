@@ -1,11 +1,6 @@
 <?php
-// Conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "autolavado");
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+include 'conexión.php';
 
 // Verificar si se recibió el ID del pedido
 if (isset($_POST['id'])) {

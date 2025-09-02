@@ -1,11 +1,7 @@
 <?php
-// Conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "autolavado");
 
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+include 'conexión.php';
+
 
 // Verificar si se han enviado datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

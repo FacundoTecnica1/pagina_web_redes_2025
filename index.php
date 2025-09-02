@@ -1,11 +1,6 @@
 <?php
-// Conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "autolavado");
 
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+include 'php/conexión.php';
 
 $can_review = false;
 $id_cliente_cookie = null;
@@ -286,7 +281,7 @@ if (isset($_COOKIE['ID_cliente'])) {
         <a href="#inicio">Inicio</a>
         <a href="#servicios">Servicios</a>
         <a href="#reseñas">Reseñas</a>
-        <a href="pedidos.php">Pedidos</a>
+        <a href="php/pedidos.php">Pedidos</a>
       </nav>
     </div>
   </header>
@@ -300,7 +295,7 @@ if (isset($_COOKIE['ID_cliente'])) {
       <div class="hero-text">
         <h1><span>Autolavado Premium</span></h1>
         <p>Transformamos tu vehículo con productos y técnicas de limpieza de alta calidad.</p>
-        <a href="registro.html" class="btn">Registrar Auto / Pedir Servicio</a>
+        <a href="html/registro.html" class="btn">Registrar Auto / Pedir Servicio</a>
       </div>
     </div>
   </section>

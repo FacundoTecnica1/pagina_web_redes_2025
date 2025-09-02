@@ -1,11 +1,6 @@
 <?php
-// Conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "autolavado");
 
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+include 'conexión.php';
 
 // Inicializar la variable de búsqueda
 $search_query = "";
@@ -63,7 +58,6 @@ if ($id_cliente_cookie) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;

@@ -1,9 +1,6 @@
 <?php
 
-$conexion = new mysqli('localhost', 'root', '', 'autolavado');
-if ($conexion->connect_error) {
-    die('Error de conexión: ' . $conexion->connect_error);
-}
+include 'conexión.php';
 
 // Obtener datos del POST
 $id_cliente = $_POST['ID_cliente'];

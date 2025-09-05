@@ -97,12 +97,14 @@ if (isset($_COOKIE['ID_cliente'])) {
     }
 
     .hero-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      text-align: center;
-    }
+  display: flex;
+  flex-direction: row;   /* 🔴 ahora en fila, no columna */
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  text-align: left;      /* 🔴 el texto queda alineado a la izquierda */
+}
+
 
     .hero-logo {
       background: rgba(255,255,255,0.1);
@@ -276,7 +278,7 @@ if (isset($_COOKIE['ID_cliente'])) {
   <!-- HEADER -->
   <header>
     <div class="container">
-      <div class="logo">Auto<span>Lavado</span>Pro</div>
+      <div class="logo"><span>JN</span>Clean</div>
       <nav>
         <a href="#inicio">Inicio</a>
         <a href="#servicios">Servicios</a>
@@ -288,16 +290,17 @@ if (isset($_COOKIE['ID_cliente'])) {
 
   <!-- HERO -->
   <section class="hero" id="inicio">
-    <div class="container hero-content">
-      <div class="hero-logo">
-        <img src="imagenes/ferrari.png" alt="ferrari logo">
-      </div>
-      <div class="hero-text">
-        <h1><span>Autolavado Premium</span></h1>
-        <p>Transformamos tu vehículo con productos y técnicas de limpieza de alta calidad.</p>
-        <a href="html/registro.html" class="btn">Registrar Auto / Pedir Servicio</a>
-      </div>
-    </div>
+   <div class="container hero-content">
+  <div class="hero-logo">
+    <img src="imagenes/logo.png" alt="pocoyo logo">
+  </div>
+  <div class="hero-text">
+    <h1><span>Autolavado Premium</span></h1>
+    <p>Transformamos tu vehículo con productos y técnicas de limpieza de alta calidad.</p>
+    <a href="html/registro.html" class="btn">Registrar Auto / Pedir Servicio</a>
+  </div>
+</div>
+
   </section>
 
   <!-- SERVICIOS -->

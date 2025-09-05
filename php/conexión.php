@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "phpmyadmin";
-$password = "RedesInformaticas";
+$username = "root";
+$password = "";
 $dbname = "autolavado";
 
 // Crear conexión
